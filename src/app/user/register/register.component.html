@@ -8,7 +8,7 @@
           duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
         placeholder="Enter Name" minlength="3" /> 
         
-        <p *ngIf="registerForm.controls.name.errors?.['required']" class="text-red-400">
+        <p *ngIf="registerForm.controls.name.touched && registerForm.controls.name.dirty && registerForm.controls.name.errors?.['required']" class="text-red-400">
             This field is required
         </p>
 

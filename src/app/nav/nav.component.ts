@@ -14,9 +14,7 @@ export class NavComponent implements OnInit{
     public modal: ModalService,
     public auth: AuthService
     ) {
-      /*this.auth.isAuthenticated$.subscribe(status => {
-        this.isAuthenticated = status
-      })*/
+       
     }
 
   ngOnInit(): void {

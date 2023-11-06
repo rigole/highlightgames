@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import IUser from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class AuthService {
   constructor(
     private auth: AngularFireAuth,
     private db: AngularFirestore,
+    private router: Router
     
   ) {
     this.usersCollection = db.collection('users')
@@ -47,5 +49,15 @@ export class AuthService {
       displayName: userData.name
     })
 
+  }
+
+  public async logout($event?: Event){
+    if ($event) {
+      $event.preventDefault()
+    }
+    
+    await this.auth.signOut()
+    
+    await this.router.navigateByUrl('/')
   }
 }

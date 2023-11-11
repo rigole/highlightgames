@@ -21,13 +21,16 @@
                 routerLink="/manage" 
                 routerLinkActive="text-indigo-400" 
                 [routerLinkActiveOptions]="{ exact: true }"
+                [queryParams]="{ sort: '1' }"
                 >
                 Manage
               </a>
             </li> <!--CampassPLCNov2023*/-->
 
             <li>
-              <a class="px-2" routerLink="/" routerLinkActive="text-indigo-400" [routerLinkActiveOptions]="{exact: true}">
+              <a class="px-2" routerLink="/upload" 
+                 routerLinkActive="text-indigo-400" 
+                 [routerLinkActiveOptions]="{exact: true}">
                 Upload
               </a>
             </li>

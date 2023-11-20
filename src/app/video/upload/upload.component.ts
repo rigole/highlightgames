@@ -47,7 +47,9 @@ export class UploadComponent implements OnInit{
 
   storeFile($event: Event){
 
-    this.file = ($event as DragEvent).dataTransfer?.files.item(0) ?? null
+    this.file = ($event as DragEvent).dataTransfer ?
+    ($event as DragEvent).dataTransfer?.files.item(0) ?? null :
+    ($event.target as HTMLInputElement).files?.item(0) ?? null
 
     this.isDragover = false
 
@@ -62,6 +64,8 @@ export class UploadComponent implements OnInit{
   }
 
   uploadFile() {
+    this.uploadForm.disable()
+
     this.showAlert = true
     this.alertColor = 'blue'
     this.alertMsg = 'please wait! Your clups is being uploaded!'
@@ -99,6 +103,7 @@ export class UploadComponent implements OnInit{
         this.showPercentage = false
       },
       error: (error) => {
+        this.uploadForm.enable()
         this.alertColor = 'red'
         this.alertMsg = 'Upload failed! Please try again later.'
         this.inSubmission = true

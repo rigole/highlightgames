@@ -84,6 +84,8 @@ export class RegisterComponent {
         return 
        }
       //Asdfghj123
+
+      
     
     
     this.alertMsg = 'Success! Your account has been successfully'
